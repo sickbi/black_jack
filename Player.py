@@ -36,9 +36,9 @@ class Player:
 
     def show(self):
         if self.isDealer:
-            print("Dealer의 card")
+            print("Dealer의 카드")
         else:
-            print("Player의 card")
+            print("Player의 카드")
 
         for i in self.cards:
             i.show()
