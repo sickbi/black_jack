@@ -1,21 +1,23 @@
 import random
 from Card import Card
 
+a = Card()
 
 class Deck:
+    deck = []
     def __init__(self):
-        self.cards = []
-        for i in range(1, 14):
-            for j in range(4):
-                self.cards.append(Card(i, j))
+        pass
 
     def draw(self, iteration):
-        cards = []
         for i in range(iteration):
-            card = random.choice(self.cards)
-            self.cards.remove(card)
-            cards.append(card)
-        return cards
+            card = random.choice(Card.cards)
+            Card.cards.remove(card)
+            Deck.deck.append(card)
 
     def count(self):
-        return len(self.cards)
+        return len(Card.cards)
+
+if __name__ == '__main__':
+    t_deck = Deck()
+    print(t_deck.draw(1))
+    print(t_deck.count())

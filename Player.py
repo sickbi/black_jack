@@ -1,21 +1,20 @@
 from Deck import Deck
 
-class Player:
-    def __init__(self, isDealer, deck):
-        self.cards = []
+class Player(Deck): #deck 클래스 상속
+    def __init__(self, isDealer):
+        super().__init__()
         self.isDealer = isDealer
-        self.deck = deck
         self.score = 0
 
     def hit(self):
-        self.cards.extend(self.deck.draw(1))
+        super().draw(1)
         self.check_score()
         if self.score > 21:
             return 1
         return 0
 
     def deal(self):
-        self.cards.extend(self.deck.draw(2))
+        super().draw(2)
         self.check_score()
         if self.score == 21:
             return 1
@@ -24,10 +23,10 @@ class Player:
     def check_score(self):
         a_counter = 0
         self.score = 0
-        for card in self.cards:
-            if card.price() == 11:
+        for card in Deck.deck:
+            if card.score() == 11:
                 a_counter += 1
-            self.score += card.price()
+            self.score += card.score()
 
         while a_counter != 0 and self.score > 21:
             a_counter -= 1
@@ -40,7 +39,7 @@ class Player:
         else:
             print("Player의 카드")
 
-        for i in self.cards:
+        for i in Deck.deck:
             i.show()
 
         print("Score: " + str(self.score))

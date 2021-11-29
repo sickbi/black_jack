@@ -2,9 +2,8 @@ from Deck import Deck
 from Player import Player
 
 def game():
-    deck = Deck()
-    player = Player(False, deck)
-    dealer = Player(True, deck)
+    player = Player(False)
+    dealer = Player(True)
 
     p_status = player.deal()
     d_status = dealer.deal()
